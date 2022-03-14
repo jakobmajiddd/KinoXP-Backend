@@ -1,5 +1,6 @@
 package com.company.kinoxpbackend.services;
 
+import com.company.kinoxpbackend.exceptions.LoginException;
 import com.company.kinoxpbackend.models.User;
 import com.company.kinoxpbackend.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,9 +26,9 @@ public class UserService {
             if (userOptional.isPresent()) {
                 userLoggedIn = userOptional.get();
             } else {
-                throw new Exception();
+                throw new LoginException("Login exception");
             }
-        } catch (Exception e) {
+        } catch (LoginException e) {
             System.out.println(e.getMessage());
         }
         
