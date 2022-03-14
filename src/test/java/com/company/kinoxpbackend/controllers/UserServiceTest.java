@@ -22,7 +22,7 @@ class UserServiceTest {
     }
 
     @Test
-    void verifyLogin() {
+    void verifyLogin() throws LoginException {
         User testUser = new User();
         testUser.setUsername("jeh");
         testUser.setPassword("hej");

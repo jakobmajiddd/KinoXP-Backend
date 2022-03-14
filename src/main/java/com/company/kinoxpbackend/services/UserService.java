@@ -6,32 +6,18 @@ import com.company.kinoxpbackend.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Optional;
-
 @Service
 public class UserService {
 
-    public UserRepository userRepository;
+    public final UserRepository userRepository;
 
     @Autowired
     public UserService(UserRepository userRepository) {
         this.userRepository = userRepository;
     }
 
-    public User verifyLogin(User user) {
-        Optional<User> userOptional = userRepository.findByUsernamePasswordMatch(user.getUsername(), user.getPassword());
-        User userLoggedIn = null;
-        
-        try {
-            if (userOptional.isPresent()) {
-                userLoggedIn = userOptional.get();
-            } else {
-                throw new LoginException("Login exception");
-            }
-        } catch (LoginException e) {
-            System.out.println(e.getMessage());
-        }
-        
-        return userLoggedIn;
+    public User verifyLogin(User user) throws LoginException {
+        return userRepository.findByUsernamePasswordMatch(user.getUsername(), user.getPassword())
+                .orElseThrow(() -> new LoginException("User not found"));
     }
 }
