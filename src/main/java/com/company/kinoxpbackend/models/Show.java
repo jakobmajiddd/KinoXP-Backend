@@ -15,6 +15,12 @@ public class Show {
     @Column(name = "movie_name")
     private String movieName;
 
+    @Column(name = "genre")
+    private String genre;
+
+    @Column(name = "age_limit")
+    private Integer ageLimit;
+
     @Column(name = "image_url")
     private String imageUrl;
 
@@ -28,9 +34,13 @@ public class Show {
 
     }
 
-    public Show(Long showId, String movieName, String imageUrl, Date startDate, Date finishDate) {
+    public Show(Long showId, String movieName, String genre,
+                Integer ageLimit, String imageUrl,
+                Date startDate, Date finishDate) {
         this.showId = showId;
         this.movieName = movieName;
+        this.genre = genre;
+        this.ageLimit = ageLimit;
         this.imageUrl = imageUrl;
         this.startDate = startDate;
         this.finishDate = finishDate;
@@ -50,6 +60,22 @@ public class Show {
 
     public void setMovieName(String movieName) {
         this.movieName = movieName;
+    }
+
+    public String getGenre() {
+        return genre;
+    }
+
+    public void setGenre(String genre) {
+        this.genre = genre;
+    }
+
+    public Integer getAgeLimit() {
+        return ageLimit;
+    }
+
+    public void setAgeLimit(Integer ageLimit) {
+        this.ageLimit = ageLimit;
     }
 
     public String getImageUrl() {
@@ -81,6 +107,8 @@ public class Show {
         return "Show{" +
                 "showId=" + showId +
                 ", movieName='" + movieName + '\'' +
+                ", genre='" + genre + '\'' +
+                ", ageLimit=" + ageLimit +
                 ", imageUrl='" + imageUrl + '\'' +
                 ", startDate=" + startDate +
                 ", finishDate=" + finishDate +
