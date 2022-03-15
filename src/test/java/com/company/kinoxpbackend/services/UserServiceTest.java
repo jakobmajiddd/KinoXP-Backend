@@ -1,4 +1,4 @@
-package com.company.kinoxpbackend.controllers;
+package com.company.kinoxpbackend.services;
 
 import com.company.kinoxpbackend.exceptions.LoginException;
 import com.company.kinoxpbackend.models.User;

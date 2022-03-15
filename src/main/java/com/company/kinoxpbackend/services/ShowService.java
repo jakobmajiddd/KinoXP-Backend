@@ -1,5 +1,6 @@
 package com.company.kinoxpbackend.services;
 
+import com.company.kinoxpbackend.exceptions.ShowNotFoundException;
 import com.company.kinoxpbackend.models.Show;
 import com.company.kinoxpbackend.repositories.ShowRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,5 +18,9 @@ public class ShowService {
 
     public Show createShow(Show show) {
         return showRepository.save(show);
+    }
+
+    public Show findByid(Long id) throws ShowNotFoundException {
+        return showRepository.findById(id).orElseThrow(() -> new ShowNotFoundException("Show Not Found"));
     }
 }

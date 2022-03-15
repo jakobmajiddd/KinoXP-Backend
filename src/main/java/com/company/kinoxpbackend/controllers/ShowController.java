@@ -21,8 +21,8 @@ public class ShowController {
     @CrossOrigin
     @PostMapping("/create")
     public ResponseEntity<Show> createShow(@RequestBody Show show) {
-        showService.createShow(show);
-        System.out.println(show);
-        return new ResponseEntity<>(HttpStatus.OK);
+        Show showCreated = showService.createShow(show);
+        System.out.println(showCreated);
+        return new ResponseEntity<>(showCreated, HttpStatus.OK);
     }
 }
