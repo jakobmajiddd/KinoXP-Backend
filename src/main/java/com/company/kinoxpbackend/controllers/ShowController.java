@@ -22,7 +22,7 @@ public class ShowController {
     @PostMapping("/create")
     public ResponseEntity<Show> createShow(@RequestBody Show show) {
         showService.createShow(show);
-        System.out.println(show.getMovieName());
+        System.out.println(show);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 }
