@@ -1,14 +1,14 @@
 package com.company.kinoxpbackend.models;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
+@Table(name = "shows")
 public class Show {
 
     @Id
     @Column(name = "show_id")
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long showId;
 
     @Column(name = "movie_name")
