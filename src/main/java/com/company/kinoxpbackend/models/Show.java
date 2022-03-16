@@ -32,15 +32,13 @@ public class Show {
     private Date finishDate;
 
     @Column(name = "duration")
-    private Duration duration;
+    private String duration;
 
     public Show() {
 
     }
 
-    public Show(Long showId, String movieName, String genre,
-                Integer ageLimit, String imageUrl,
-                Date startDate, Date finishDate, Duration duration) {
+    public Show(Long showId, String movieName, String genre, Integer ageLimit, String imageUrl, Date startDate, Date finishDate, String duration) {
         this.showId = showId;
         this.movieName = movieName;
         this.genre = genre;
@@ -107,24 +105,11 @@ public class Show {
         this.finishDate = finishDate;
     }
 
-    public Duration getDuration(){
+    public String getDuration() {
         return duration;
     }
 
-    public void setDuration(Duration duration){
+    public void setDuration(String duration) {
         this.duration = duration;
-    }
-
-    @Override
-    public String toString() {
-        return "Show{" +
-                "showId=" + showId +
-                ", movieName='" + movieName + '\'' +
-                ", genre='" + genre + '\'' +
-                ", ageLimit=" + ageLimit +
-                ", imageUrl='" + imageUrl + '\'' +
-                ", startDate=" + startDate +
-                ", finishDate=" + finishDate +
-                '}';
     }
 }
