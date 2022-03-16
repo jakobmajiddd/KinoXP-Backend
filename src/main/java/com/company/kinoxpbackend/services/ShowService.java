@@ -29,4 +29,8 @@ public class ShowService {
     public List<Show> getShows() {
         return showRepository.findAll();
     }
+
+    public Show updateShow(Show show) {
+        return showRepository.save(show);
+    }
 }

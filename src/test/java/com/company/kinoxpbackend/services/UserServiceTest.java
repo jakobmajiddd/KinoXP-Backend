@@ -28,6 +28,5 @@ class UserServiceTest {
         testUser.setPassword("hej");
 
         assertNotNull(userService.verifyLogin(testUser));
-
     }
 }

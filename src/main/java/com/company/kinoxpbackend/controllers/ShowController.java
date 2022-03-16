@@ -42,4 +42,13 @@ public class ShowController {
         Show show = showService.findByid(id);
         return new ResponseEntity<>(show, HttpStatus.OK);
     }
+
+    @CrossOrigin
+    @PutMapping("/update/{id}")
+    public ResponseEntity<Show> updateShow(@PathVariable Long id, @RequestBody Show show) {
+        show.setShowId(id);
+        System.out.println(id);
+        showService.updateShow(show);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
 }
