@@ -1,6 +1,7 @@
 package com.company.kinoxpbackend.models;
 
 import javax.persistence.*;
+import java.time.Duration;
 import java.util.Date;
 
 @Entity
@@ -30,13 +31,16 @@ public class Show {
     @Column(name = "finish_date")
     private Date finishDate;
 
+    @Column(name = "duration")
+    private Duration duration;
+
     public Show() {
 
     }
 
     public Show(Long showId, String movieName, String genre,
                 Integer ageLimit, String imageUrl,
-                Date startDate, Date finishDate) {
+                Date startDate, Date finishDate, Duration duration) {
         this.showId = showId;
         this.movieName = movieName;
         this.genre = genre;
@@ -44,6 +48,7 @@ public class Show {
         this.imageUrl = imageUrl;
         this.startDate = startDate;
         this.finishDate = finishDate;
+        this.duration = duration;
     }
 
     public Long getShowId() {
@@ -100,6 +105,14 @@ public class Show {
 
     public void setFinishDate(Date finishDate) {
         this.finishDate = finishDate;
+    }
+
+    public Duration getDuration(){
+        return duration;
+    }
+
+    public void setDuration(Duration duration){
+        this.duration = duration;
     }
 
     @Override
