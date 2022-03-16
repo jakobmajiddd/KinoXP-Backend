@@ -7,6 +7,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/api/shows")
 public class ShowController {
@@ -24,5 +26,12 @@ public class ShowController {
         Show showCreated = showService.createShow(show);
         System.out.println(showCreated);
         return new ResponseEntity<>(showCreated, HttpStatus.OK);
+    }
+
+    @CrossOrigin
+    @GetMapping()
+    public ResponseEntity<List<Show>> getShows() {
+        List<Show> shows = showService.getShows();
+        return new ResponseEntity<>(shows, HttpStatus.OK);
     }
 }

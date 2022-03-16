@@ -6,6 +6,8 @@ import com.company.kinoxpbackend.repositories.ShowRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class ShowService {
 
@@ -22,5 +24,9 @@ public class ShowService {
 
     public Show findByid(Long id) throws ShowNotFoundException {
         return showRepository.findById(id).orElseThrow(() -> new ShowNotFoundException("Show Not Found"));
+    }
+
+    public List<Show> getShows() {
+        return showRepository.findAll();
     }
 }
