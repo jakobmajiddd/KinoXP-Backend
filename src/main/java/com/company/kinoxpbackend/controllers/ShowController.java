@@ -1,5 +1,6 @@
 package com.company.kinoxpbackend.controllers;
 
+import com.company.kinoxpbackend.exceptions.ShowNotFoundException;
 import com.company.kinoxpbackend.models.Show;
 import com.company.kinoxpbackend.services.ShowService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,5 +34,12 @@ public class ShowController {
     public ResponseEntity<List<Show>> getShows() {
         List<Show> shows = showService.getShows();
         return new ResponseEntity<>(shows, HttpStatus.OK);
+    }
+
+    @CrossOrigin
+    @GetMapping("/show/{id}")
+    public ResponseEntity<Show> getShow(@PathVariable Long id) throws ShowNotFoundException {
+        Show show = showService.findByid(id);
+        return new ResponseEntity<>(show, HttpStatus.OK);
     }
 }
