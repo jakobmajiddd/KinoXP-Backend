@@ -30,7 +30,7 @@ public class ShowService {
         return showRepository.findAll();
     }
 
-    public Show updateShow(Show show) {
+    public Show editShow(Show show) {
         return showRepository.save(show);
     }
 }
