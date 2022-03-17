@@ -13,6 +13,10 @@ public class Show {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long showId;
 
+    @OneToOne
+    @JoinColumn(name = "room_id")
+    private Room room;
+
     @Column(name = "movie_name")
     private String movieName;
 
@@ -38,8 +42,9 @@ public class Show {
 
     }
 
-    public Show(Long showId, String movieName, String genre, Integer ageLimit, String imageUrl, Date startDate, Date finishDate, String duration) {
+    public Show(Long showId, Room room, String movieName, String genre, Integer ageLimit, String imageUrl, Date startDate, Date finishDate, String duration) {
         this.showId = showId;
+        this.room = room;
         this.movieName = movieName;
         this.genre = genre;
         this.ageLimit = ageLimit;
@@ -55,6 +60,14 @@ public class Show {
 
     public void setShowId(Long showId) {
         this.showId = showId;
+    }
+
+    public Room getRoom() {
+        return room;
+    }
+
+    public void setRoom(Room room) {
+        this.room = room;
     }
 
     public String getMovieName() {
