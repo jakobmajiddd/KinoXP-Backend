@@ -13,9 +13,9 @@ public class Show {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long showId;
 
-    @OneToOne
-    @JoinColumn(name = "room_id")
-    private Room room;
+
+    @Column(name = "room_id")
+    private Long roomId;
 
     @Column(name = "movie_name")
     private String movieName;
@@ -42,9 +42,9 @@ public class Show {
 
     }
 
-    public Show(Long showId, Room room, String movieName, String genre, Integer ageLimit, String imageUrl, Date startDate, Date finishDate, String duration) {
+    public Show(Long showId, Long roomId, String movieName, String genre, Integer ageLimit, String imageUrl, Date startDate, Date finishDate, String duration) {
         this.showId = showId;
-        this.room = room;
+        this.roomId = roomId;
         this.movieName = movieName;
         this.genre = genre;
         this.ageLimit = ageLimit;
@@ -62,12 +62,12 @@ public class Show {
         this.showId = showId;
     }
 
-    public Room getRoom() {
-        return room;
+    public Long getRoomId() {
+        return roomId;
     }
 
-    public void setRoom(Room room) {
-        this.room = room;
+    public void setRoomId(Long roomId) {
+        this.roomId = roomId;
     }
 
     public String getMovieName() {
