@@ -49,4 +49,11 @@ public class ShowController {
         show.setShowId(id);
         return new ResponseEntity<>(showService.editShow(show), HttpStatus.OK);
     }
+
+    @CrossOrigin
+    @DeleteMapping("/delete/{id}")
+    public ResponseEntity<Show> deleteShow(@PathVariable Long id) {
+        showService.deleteShow(id);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
 }

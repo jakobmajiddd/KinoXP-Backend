@@ -33,4 +33,8 @@ public class ShowService {
     public Show editShow(Show show) {
         return showRepository.save(show);
     }
+
+    public void deleteShow(Long id) {
+        showRepository.deleteById(id);
+    }
 }
