@@ -1,19 +1,20 @@
 package com.company.kinoxpbackend.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
-import java.time.Duration;
 import java.time.LocalTime;
-import java.util.Date;
 import java.util.List;
 
 @Entity
+@JsonIgnoreProperties(ignoreUnknown = true)
 @Table(name = "shows")
 public class Show {
 
     @Id
     @Column(name = "show_id")
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long showId;
+    private Long id;
 
     @OneToOne
     @JoinColumn(name = "room_id")
@@ -35,20 +36,20 @@ public class Show {
 
     }
 
-    public Show(Long showId, Room room, LocalTime startDate, List<Booking> bookings, Movie movie) {
-        this.showId = showId;
+    public Show(Long id, Room room, LocalTime startDate, List<Booking> bookings, Movie movie) {
+        this.id = id;
         this.room = room;
         this.startDate = startDate;
         this.bookings = bookings;
         this.movie = movie;
     }
 
-    public Long getShowId() {
-        return showId;
+    public Long getId() {
+        return id;
     }
 
-    public void setShowId(Long showId) {
-        this.showId = showId;
+    public void setId(Long showId) {
+        this.id = showId;
     }
 
     public Room getRoom() {

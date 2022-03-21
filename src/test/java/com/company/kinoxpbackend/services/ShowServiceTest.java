@@ -6,10 +6,6 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import java.util.Calendar;
-import java.util.Date;
-import java.util.List;
-
 import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
@@ -27,7 +23,7 @@ public class ShowServiceTest {
         Show testShow = new Show();
 
         Show show = showService.createShow(testShow);
-        Long id = show.getShowId();
+        Long id = show.getId();
 
         Show foundUser = showService.findByid(id);
 

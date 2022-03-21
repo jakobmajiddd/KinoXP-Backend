@@ -29,29 +29,39 @@ public class Movie {
 
     }
 
+
+
     public Movie(Long id, String imageUrl, String name, Integer duration, Integer ageLimit, String genre) {
         this.id = id;
+        this.imageUrl = imageUrl;
         this.name = name;
         this.duration = duration;
         this.ageLimit = ageLimit;
         this.genre = genre;
-        this.imageUrl = imageUrl;
     }
 
     public Long getId() {
         return id;
     }
 
-    public void setId(Long movieId) {
-        this.id = movieId;
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
     }
 
     public String getName() {
         return name;
     }
 
-    public void setName(String title) {
-        this.name = title;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public Integer getDuration() {
@@ -76,13 +86,5 @@ public class Movie {
 
     public void setGenre(String genre) {
         this.genre = genre;
-    }
-
-    public String getImageUrl() {
-        return imageUrl;
-    }
-
-    public void setImageUrl(String imageUrl) {
-        this.imageUrl = imageUrl;
     }
 }

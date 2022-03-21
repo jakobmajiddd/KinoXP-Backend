@@ -16,27 +16,24 @@ public class Room {
 
     @Column(name = "seat_amount")
     private Integer seatAmount;
-    @OneToMany
-    @JoinColumn(name = "seat_id")
-    private List<Seat> seats;
+
 
     public Room() {
 
     }
 
-    public Room(Long id, String name, Integer seatAmount, List<Seat> seats) {
+    public Room(Long id, String name, Integer seatAmount) {
         this.id = id;
         this.name = name;
         this.seatAmount = seatAmount;
-        this.seats = seats;
     }
 
     public Long getId() {
         return id;
     }
 
-    public void setId(Long roomId) {
-        this.id = roomId;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -53,13 +50,5 @@ public class Room {
 
     public void setSeatAmount(Integer seatAmount) {
         this.seatAmount = seatAmount;
-    }
-
-    public List<Seat> getSeats() {
-        return seats;
-    }
-
-    public void setSeats(List<Seat> seats) {
-        this.seats = seats;
     }
 }
