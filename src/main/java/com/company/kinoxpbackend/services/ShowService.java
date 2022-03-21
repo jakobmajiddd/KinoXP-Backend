@@ -4,6 +4,7 @@ import com.company.kinoxpbackend.exceptions.ShowNotFoundException;
 import com.company.kinoxpbackend.models.Show;
 import com.company.kinoxpbackend.repositories.ShowRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -23,11 +24,12 @@ public class ShowService {
     }
 
     public Show findByid(Long id) throws ShowNotFoundException {
+
         return showRepository.findById(id).orElseThrow(() -> new ShowNotFoundException("Show Not Found"));
     }
 
     public List<Show> getShows() {
-        return showRepository.findAll();
+        return showRepository.getShowsByDate().orElseThrow(() -> new IllegalArgumentException("Error"));
     }
 
     public Show editShow(Show show) {
