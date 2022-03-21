@@ -18,9 +18,6 @@ public class Show {
     @JoinColumn(name = "room_id")
     private Room room;
 
-    @Column(name = "image_url")
-    private String imageUrl;
-
     @Column(name = "start_date")
     private Date startDate;
 
@@ -37,10 +34,9 @@ public class Show {
 
     }
 
-    public Show(Long showId, Room room, String imageUrl, Date startDate, List<Booking> bookings, Movie movie) {
+    public Show(Long showId, Room room, Date startDate, List<Booking> bookings, Movie movie) {
         this.showId = showId;
         this.room = room;
-        this.imageUrl = imageUrl;
         this.startDate = startDate;
         this.bookings = bookings;
         this.movie = movie;
@@ -60,14 +56,6 @@ public class Show {
 
     public void setRoom(Room room) {
         this.room = room;
-    }
-
-    public String getImageUrl() {
-        return imageUrl;
-    }
-
-    public void setImageUrl(String imageUrl) {
-        this.imageUrl = imageUrl;
     }
 
     public Date getStartDate() {

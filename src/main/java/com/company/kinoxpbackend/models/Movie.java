@@ -1,10 +1,7 @@
 package com.company.kinoxpbackend.models;
 
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 
 @Table(name = "movies")
@@ -13,7 +10,11 @@ public class Movie {
 
     @Id
     @Column(name = "movie_id")
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long movieId;
+
+    @Column(name = "image_url")
+    private String imageUrl;
 
     private String title;
 
@@ -28,12 +29,13 @@ public class Movie {
 
     }
 
-    public Movie(Long movieId, String title, Integer duration, Integer ageLimit, String genre) {
+    public Movie(Long movieId, String imageUrl, String title, Integer duration, Integer ageLimit, String genre) {
         this.movieId = movieId;
         this.title = title;
         this.duration = duration;
         this.ageLimit = ageLimit;
         this.genre = genre;
+        this.imageUrl = imageUrl;
     }
 
     public Long getMovieId() {
@@ -74,5 +76,13 @@ public class Movie {
 
     public void setGenre(String genre) {
         this.genre = genre;
+    }
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
     }
 }
