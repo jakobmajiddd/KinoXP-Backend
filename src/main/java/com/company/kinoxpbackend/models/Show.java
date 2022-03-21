@@ -3,6 +3,7 @@ package com.company.kinoxpbackend.models;
 import javax.persistence.*;
 import java.time.Duration;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "shows")
@@ -13,18 +14,9 @@ public class Show {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long showId;
 
-
-    @Column(name = "room_id")
-    private Long roomId;
-
-    @Column(name = "movie_name")
-    private String movieName;
-
-    @Column(name = "genre")
-    private String genre;
-
-    @Column(name = "age_limit")
-    private Integer ageLimit;
+    @OneToOne
+    @JoinColumn(name = "room_id")
+    private Room room;
 
     @Column(name = "image_url")
     private String imageUrl;
@@ -32,26 +24,26 @@ public class Show {
     @Column(name = "start_date")
     private Date startDate;
 
-    @Column(name = "finish_date")
-    private Date finishDate;
+    @OneToMany
+    @JoinColumn(name = "booking_id")
+    private List<Booking> bookings;
 
-    @Column(name = "duration")
-    private String duration;
+    @OneToOne
+    @JoinColumn(name = "movie_id")
+    private Movie movie;
+
 
     public Show() {
 
     }
 
-    public Show(Long showId, Long roomId, String movieName, String genre, Integer ageLimit, String imageUrl, Date startDate, Date finishDate, String duration) {
+    public Show(Long showId, Room room, String imageUrl, Date startDate, List<Booking> bookings, Movie movie) {
         this.showId = showId;
-        this.roomId = roomId;
-        this.movieName = movieName;
-        this.genre = genre;
-        this.ageLimit = ageLimit;
+        this.room = room;
         this.imageUrl = imageUrl;
         this.startDate = startDate;
-        this.finishDate = finishDate;
-        this.duration = duration;
+        this.bookings = bookings;
+        this.movie = movie;
     }
 
     public Long getShowId() {
@@ -62,36 +54,12 @@ public class Show {
         this.showId = showId;
     }
 
-    public Long getRoomId() {
-        return roomId;
+    public Room getRoom() {
+        return room;
     }
 
-    public void setRoomId(Long roomId) {
-        this.roomId = roomId;
-    }
-
-    public String getMovieName() {
-        return movieName;
-    }
-
-    public void setMovieName(String movieName) {
-        this.movieName = movieName;
-    }
-
-    public String getGenre() {
-        return genre;
-    }
-
-    public void setGenre(String genre) {
-        this.genre = genre;
-    }
-
-    public Integer getAgeLimit() {
-        return ageLimit;
-    }
-
-    public void setAgeLimit(Integer ageLimit) {
-        this.ageLimit = ageLimit;
+    public void setRoom(Room room) {
+        this.room = room;
     }
 
     public String getImageUrl() {
@@ -110,19 +78,19 @@ public class Show {
         this.startDate = startDate;
     }
 
-    public Date getFinishDate() {
-        return finishDate;
+    public List<Booking> getBookings() {
+        return bookings;
     }
 
-    public void setFinishDate(Date finishDate) {
-        this.finishDate = finishDate;
+    public void setBookings(List<Booking> bookings) {
+        this.bookings = bookings;
     }
 
-    public String getDuration() {
-        return duration;
+    public Movie getMovie() {
+        return movie;
     }
 
-    public void setDuration(String duration) {
-        this.duration = duration;
+    public void setMovie(Movie movie) {
+        this.movie = movie;
     }
 }

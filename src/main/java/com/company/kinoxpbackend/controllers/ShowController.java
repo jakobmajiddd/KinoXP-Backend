@@ -47,7 +47,6 @@ public class ShowController {
     @PutMapping("/edit/{id}")//Skal hede show id. verbet afgør hvad der sker
     public ResponseEntity<Show> editShow(@PathVariable Long id, @RequestBody Show show) {
         show.setShowId(id);
-        System.out.println(show.getRoomId());
         return new ResponseEntity<>(showService.editShow(show), HttpStatus.OK);
     }
 

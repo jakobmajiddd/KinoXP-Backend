@@ -1,9 +1,7 @@
 package com.company.kinoxpbackend.models;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "rooms")
@@ -18,15 +16,19 @@ public class Room {
 
     @Column(name = "seat_amount")
     private Integer seatAmount;
+    @OneToMany
+    @JoinColumn(name = "seat_id")
+    private List<Seat> seats;
 
     public Room() {
 
     }
 
-    public Room(Long roomId, String name, Integer seatAmount) {
+    public Room(Long roomId, String name, Integer seatAmount, List<Seat> seats) {
         this.roomId = roomId;
         this.name = name;
         this.seatAmount = seatAmount;
+        this.seats = seats;
     }
 
     public Long getRoomId() {
@@ -51,5 +53,13 @@ public class Room {
 
     public void setSeatAmount(Integer seatAmount) {
         this.seatAmount = seatAmount;
+    }
+
+    public List<Seat> getSeats() {
+        return seats;
+    }
+
+    public void setSeats(List<Seat> seats) {
+        this.seats = seats;
     }
 }

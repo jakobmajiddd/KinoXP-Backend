@@ -14,18 +14,19 @@ public class ReservedSeat {
     @JoinColumn(name = "booking_id")
     private Booking booking;
 
-    @ManyToOne
-    @JoinColumn(name = "show_id")
-    private Show show;
+    @OneToOne // Test om man kan booke den samme sædenr. i forskellige rum
+    @JoinColumn(name = "seat_id")
+    private Seat seat;
+
 
     public ReservedSeat() {
 
     }
 
-    public ReservedSeat(Long reservedSeatId, Booking booking, Show show) {
+    public ReservedSeat(Long reservedSeatId, Booking booking, Seat seat) {
         this.reservedSeatId = reservedSeatId;
         this.booking = booking;
-        this.show = show;
+        this.seat = seat;
     }
 
     public Long getReservedSeatId() {
@@ -44,11 +45,11 @@ public class ReservedSeat {
         this.booking = booking;
     }
 
-    public Show getShow() {
-        return show;
+    public Seat getSeat() {
+        return seat;
     }
 
-    public void setShow(Show show) {
-        this.show = show;
+    public void setSeat(Seat seat) {
+        this.seat = seat;
     }
 }
