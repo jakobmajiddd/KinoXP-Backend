@@ -11,12 +11,12 @@ public class Movie {
     @Id
     @Column(name = "movie_id")
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long movieId;
+    private Long id;
 
     @Column(name = "image_url")
     private String imageUrl;
 
-    private String title;
+    private String name;
 
     private Integer duration;
 
@@ -29,29 +29,29 @@ public class Movie {
 
     }
 
-    public Movie(Long movieId, String imageUrl, String title, Integer duration, Integer ageLimit, String genre) {
-        this.movieId = movieId;
-        this.title = title;
+    public Movie(Long id, String imageUrl, String name, Integer duration, Integer ageLimit, String genre) {
+        this.id = id;
+        this.name = name;
         this.duration = duration;
         this.ageLimit = ageLimit;
         this.genre = genre;
         this.imageUrl = imageUrl;
     }
 
-    public Long getMovieId() {
-        return movieId;
+    public Long getId() {
+        return id;
     }
 
-    public void setMovieId(Long movieId) {
-        this.movieId = movieId;
+    public void setId(Long movieId) {
+        this.id = movieId;
     }
 
-    public String getTitle() {
-        return title;
+    public String getName() {
+        return name;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public void setName(String title) {
+        this.name = title;
     }
 
     public Integer getDuration() {

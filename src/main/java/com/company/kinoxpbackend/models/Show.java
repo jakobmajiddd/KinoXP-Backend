@@ -2,6 +2,7 @@ package com.company.kinoxpbackend.models;
 
 import javax.persistence.*;
 import java.time.Duration;
+import java.time.LocalTime;
 import java.util.Date;
 import java.util.List;
 
@@ -19,7 +20,7 @@ public class Show {
     private Room room;
 
     @Column(name = "start_date")
-    private Date startDate;
+    private LocalTime startDate;
 
     @OneToMany
     @JoinColumn(name = "booking_id")
@@ -34,7 +35,7 @@ public class Show {
 
     }
 
-    public Show(Long showId, Room room, Date startDate, List<Booking> bookings, Movie movie) {
+    public Show(Long showId, Room room, LocalTime startDate, List<Booking> bookings, Movie movie) {
         this.showId = showId;
         this.room = room;
         this.startDate = startDate;
@@ -58,11 +59,11 @@ public class Show {
         this.room = room;
     }
 
-    public Date getStartDate() {
+    public LocalTime getStartDate() {
         return startDate;
     }
 
-    public void setStartDate(Date startDate) {
+    public void setStartDate(LocalTime startDate) {
         this.startDate = startDate;
     }
 

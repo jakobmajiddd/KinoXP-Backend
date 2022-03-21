@@ -9,7 +9,7 @@ public class Room {
 
     @Id
     @Column(name = "room_id")
-    private Long roomId;
+    private Long id;
 
     @Column(name = "name")
     private String name;
@@ -24,19 +24,19 @@ public class Room {
 
     }
 
-    public Room(Long roomId, String name, Integer seatAmount, List<Seat> seats) {
-        this.roomId = roomId;
+    public Room(Long id, String name, Integer seatAmount, List<Seat> seats) {
+        this.id = id;
         this.name = name;
         this.seatAmount = seatAmount;
         this.seats = seats;
     }
 
-    public Long getRoomId() {
-        return roomId;
+    public Long getId() {
+        return id;
     }
 
-    public void setRoomId(Long roomId) {
-        this.roomId = roomId;
+    public void setId(Long roomId) {
+        this.id = roomId;
     }
 
     public String getName() {

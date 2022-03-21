@@ -22,7 +22,7 @@ public class ShowController {
     }
 
     @CrossOrigin
-    @PostMapping("/create")// Istedet for create, skriv show
+    @PostMapping// Istedet for create, skriv show
     public ResponseEntity<Show> createShow(@RequestBody Show show) {
         Show showCreated = showService.createShow(show);
         System.out.println(showCreated);
