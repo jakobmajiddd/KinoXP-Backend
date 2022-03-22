@@ -14,4 +14,9 @@ public interface ShowRepository extends JpaRepository<Show, Long> {
     @Query(value = "SELECT * FROM kinoxptestv1.shows " +
             "ORDER BY start_date", nativeQuery = true)
     Optional<List<Show>> getShowsByDate();
+
+    @Query(value = "SELECT s" +
+            " FROM Show s " +
+            "WHERE s.movie.id = ?1")
+    List<Show> getShowsByMovieId(Long id);
 }

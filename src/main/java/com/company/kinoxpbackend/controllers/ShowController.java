@@ -56,4 +56,12 @@ public class ShowController {
         showService.deleteShow(id);
         return new ResponseEntity<>(HttpStatus.OK);
     }
+
+    @CrossOrigin
+    @GetMapping("/{id}")
+    public ResponseEntity<List<Show>> getShowsByMovieId(@PathVariable Long id) {
+        List<Show> shows = showService.getShowsByMovieId(id);
+        System.out.println(shows.size());
+        return new ResponseEntity<>(shows, HttpStatus.OK);
+    }
 }

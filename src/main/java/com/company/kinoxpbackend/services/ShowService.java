@@ -39,4 +39,8 @@ public class ShowService {
     public void deleteShow(Long id) {
         showRepository.deleteById(id);
     }
+
+    public List<Show> getShowsByMovieId(Long id) {
+        return showRepository.getShowsByMovieId(id);
+    }
 }

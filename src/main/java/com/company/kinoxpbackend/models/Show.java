@@ -16,7 +16,7 @@ public class Show {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "room_id")
     private Room room;
 
@@ -27,14 +27,18 @@ public class Show {
     @JoinColumn(name = "booking_id")
     private List<Booking> bookings;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "movie_id")
     private Movie movie;
 
 
     public Show() {
 
+
+
     }
+
+
 
     public Show(Long id, Room room, LocalTime startDate, List<Booking> bookings, Movie movie) {
         this.id = id;

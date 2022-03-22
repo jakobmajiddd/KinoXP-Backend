@@ -1,7 +1,10 @@
 package com.company.kinoxpbackend.models;
 
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import javax.persistence.*;
+import java.util.List;
 
 
 @Table(name = "movies")
@@ -12,6 +15,11 @@ public class Movie {
     @Column(name = "movie_id")
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+
+    @OneToMany
+    @JsonBackReference
+    @JoinColumn(name = "movie_id")
+    private List<Show> shows;
 
     @Column(name = "image_url")
     private String imageUrl;
@@ -29,10 +37,9 @@ public class Movie {
 
     }
 
-
-
-    public Movie(Long id, String imageUrl, String name, Integer duration, Integer ageLimit, String genre) {
+    public Movie(Long id, List<Show> shows, String imageUrl, String name, Integer duration, Integer ageLimit, String genre) {
         this.id = id;
+        this.shows = shows;
         this.imageUrl = imageUrl;
         this.name = name;
         this.duration = duration;
@@ -46,6 +53,14 @@ public class Movie {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public List<Show> getShows() {
+        return shows;
+    }
+
+    public void setShows(List<Show> shows) {
+        this.shows = shows;
     }
 
     public String getImageUrl() {
