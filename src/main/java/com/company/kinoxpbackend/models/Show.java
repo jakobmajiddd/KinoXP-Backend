@@ -24,7 +24,7 @@ public class Show {
     private LocalTime startDate;
 
     @OneToMany
-    @JoinColumn(name = "booking_id")
+    @JoinColumn(name = "show_id")
     private List<Booking> bookings;
 
     @ManyToOne
@@ -35,9 +35,7 @@ public class Show {
     public Show() {
 
 
-
     }
-
 
 
     public Show(Long id, Room room, LocalTime startDate, List<Booking> bookings, Movie movie) {

@@ -9,11 +9,14 @@ public class Customer {
 
     @Id
     @Column(name = "customer_id")
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long customerId;
-
-    @OneToMany
+/*
+    @OneToOne
     @JoinColumn(name = "booking_id")
-    private List<Booking> bookings;
+    private Booking booking;
+
+ */
 
     private String name;
 
@@ -23,9 +26,8 @@ public class Customer {
 
     }
 
-    public Customer(Long customerId, List<Booking> bookings, String name, String email) {
+    public Customer(Long customerId, String name, String email) {
         this.customerId = customerId;
-        this.bookings = bookings;
         this.name = name;
         this.email = email;
     }
@@ -36,14 +38,6 @@ public class Customer {
 
     public void setCustomerId(Long customerId) {
         this.customerId = customerId;
-    }
-
-    public List<Booking> getBookings() {
-        return bookings;
-    }
-
-    public void setBookings(List<Booking> bookings) {
-        this.bookings = bookings;
     }
 
     public String getName() {
