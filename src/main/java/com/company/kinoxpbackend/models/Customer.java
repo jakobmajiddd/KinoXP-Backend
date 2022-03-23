@@ -1,7 +1,6 @@
 package com.company.kinoxpbackend.models;
 
 import javax.persistence.*;
-import java.util.List;
 
 @Entity
 @Table(name = "customers")
@@ -9,14 +8,15 @@ public class Customer {
 
     @Id
     @Column(name = "customer_id")
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long customerId;
-/*
-    @OneToOne
-    @JoinColumn(name = "booking_id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+
+    @OneToOne(mappedBy = "customer", fetch = FetchType.LAZY,
+            cascade = CascadeType.ALL)
     private Booking booking;
 
- */
+
 
     private String name;
 
@@ -26,18 +26,27 @@ public class Customer {
 
     }
 
-    public Customer(Long customerId, String name, String email) {
-        this.customerId = customerId;
+    public Customer(Long id, Booking booking, String name, String email) {
+        this.id = id;
+        this.booking = booking;
         this.name = name;
         this.email = email;
     }
 
-    public Long getCustomerId() {
-        return customerId;
+    public Long getId() {
+        return id;
     }
 
-    public void setCustomerId(Long customerId) {
-        this.customerId = customerId;
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Booking getBooking() {
+        return booking;
+    }
+
+    public void setBooking(Booking booking) {
+        this.booking = booking;
     }
 
     public String getName() {
@@ -56,3 +65,5 @@ public class Customer {
         this.email = email;
     }
 }
+
+

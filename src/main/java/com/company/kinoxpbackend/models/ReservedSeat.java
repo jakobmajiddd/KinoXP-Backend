@@ -8,7 +8,7 @@ public class ReservedSeat {
 
     @Id
     @Column(name = "reserved_seat_id")
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long reservedSeatId;
 
     @ManyToOne

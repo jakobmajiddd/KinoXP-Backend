@@ -14,10 +14,10 @@ public class Movie {
 
     @Id
     @Column(name = "movie_id")
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @OneToMany
+    @OneToMany(cascade = CascadeType.MERGE)
     @JsonBackReference
     @JoinColumn(name = "movie_id")
     private List<Show> shows;

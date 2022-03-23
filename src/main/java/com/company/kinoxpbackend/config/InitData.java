@@ -19,10 +19,16 @@ public class InitData implements CommandLineRunner {
     RoomRepository roomRepository;
     @Autowired
     SeatRepository seatRepository;
+    @Autowired
+    CustomerRepository customerRepository;
 
 
     @Override
     public void run(String... args) throws Exception {
+        Customer customer = new Customer();
+        customer.setName("name");
+        customer.setEmail("email");
+        customerRepository.save(customer);
 
         System.out.println("HERE");
         Movie movie = new Movie();

@@ -13,7 +13,7 @@ public class Show {
 
     @Id
     @Column(name = "show_id")
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @ManyToOne
@@ -23,7 +23,7 @@ public class Show {
     @Column(name = "start_date")
     private LocalTime startDate;
 
-    @OneToMany
+    @OneToMany(cascade = CascadeType.MERGE)
     @JoinColumn(name = "show_id")
     private List<Booking> bookings;
 

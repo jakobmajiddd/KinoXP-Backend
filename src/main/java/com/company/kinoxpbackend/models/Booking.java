@@ -9,14 +9,14 @@ public class Booking {
 
     @Id
     @Column(name = "booking_id")
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long bookingId;
 
-    @OneToOne(cascade = {CascadeType.ALL})
+    @OneToOne//(cascade = {CascadeType.ALL})
     @JoinColumn(name = "show_id")
     private Show show;
 
-    @OneToOne(cascade = {CascadeType.ALL})
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "customer_id")
     private Customer customer;
 
