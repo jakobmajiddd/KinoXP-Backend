@@ -11,17 +11,17 @@ public class Seat {
     private Long seatId;
 
     @ManyToOne
-    @JoinColumn(name = "show_id")
-    private Show show;
+    @JoinColumn(name = "room_id")
+    private Room room;
 
     public Seat() {
-
     }
 
-    public Seat(Long seatId, Show show) {
+    public Seat(Long seatId, Room room) {
         this.seatId = seatId;
-        this.show = show;
+        this.room = room;
     }
+
 
     public Long getSeatId() {
         return seatId;
@@ -31,11 +31,11 @@ public class Seat {
         this.seatId = seatId;
     }
 
-    public Show getShow() {
-        return show;
+    public Room getRoom() {
+        return room;
     }
 
-    public void setShow(Show show) {
-        this.show = show;
+    public void setRoom(Room room) {
+        this.room = room;
     }
 }
