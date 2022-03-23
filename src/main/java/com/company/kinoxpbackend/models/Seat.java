@@ -8,6 +8,7 @@ public class Seat {
 
     @Id
     @Column(name = "seat_id")
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long seatId;
 
     @ManyToOne
