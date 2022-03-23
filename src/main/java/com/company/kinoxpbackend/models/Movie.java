@@ -4,6 +4,7 @@ package com.company.kinoxpbackend.models;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import javax.persistence.*;
+import java.math.BigDecimal;
 import java.util.List;
 
 
@@ -33,11 +34,14 @@ public class Movie {
 
     private String genre;
 
+
+    private Double price;
+
     public Movie() {
 
     }
 
-    public Movie(Long id, List<Show> shows, String imageUrl, String name, Integer duration, Integer ageLimit, String genre) {
+    public Movie(Long id, List<Show> shows, String imageUrl, String name, Integer duration, Integer ageLimit, String genre, Double price) {
         this.id = id;
         this.shows = shows;
         this.imageUrl = imageUrl;
@@ -45,6 +49,7 @@ public class Movie {
         this.duration = duration;
         this.ageLimit = ageLimit;
         this.genre = genre;
+        this.price = price;
     }
 
     public Long getId() {
@@ -101,5 +106,13 @@ public class Movie {
 
     public void setGenre(String genre) {
         this.genre = genre;
+    }
+
+    public Double getPrice() {
+        return price;
+    }
+
+    public void setPrice(Double price) {
+        this.price = price;
     }
 }
