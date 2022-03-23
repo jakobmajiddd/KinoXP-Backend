@@ -22,6 +22,7 @@ public class BookingController {
     public ResponseEntity<Booking> createBooking(@RequestBody Booking booking){
         System.out.println("Hejsa");
         bookingService.createBooking(booking);
+        System.out.println("Hej");
         return new ResponseEntity<>(HttpStatus.OK);
     }
 }

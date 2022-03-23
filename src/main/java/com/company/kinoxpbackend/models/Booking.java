@@ -6,8 +6,10 @@ import javax.persistence.*;
 @Table(name = "bookings")
 public class Booking {
 
+
     @Id
     @Column(name = "booking_id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long bookingId;
 
     @ManyToOne
