@@ -16,7 +16,7 @@ public class ReservedSeat {
     private Booking booking;
 
     @JoinColumn(name = "seat_id")
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne(cascade = CascadeType.MERGE)
     private Seat seat;
 
 

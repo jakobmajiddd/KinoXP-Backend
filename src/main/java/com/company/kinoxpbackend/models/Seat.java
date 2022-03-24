@@ -9,7 +9,7 @@ public class Seat {
     @Id
     @Column(name = "seat_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long seatId;
+    private Long id;
 
     @ManyToOne
     @JoinColumn(name = "room_id")
@@ -21,25 +21,25 @@ public class Seat {
 
 
     @JoinColumn(name = "reserved_seat_id")
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne(cascade = CascadeType.MERGE)
     private ReservedSeat reservedSeat;
 
     public Seat() {
     }
 
-    public Seat(Long seatId, Room room, Customer customer, ReservedSeat reservedSeat) {
-        this.seatId = seatId;
+    public Seat(Long id, Room room, Customer customer, ReservedSeat reservedSeat) {
+        this.id = id;
         this.room = room;
         this.customer = customer;
         this.reservedSeat = reservedSeat;
     }
 
-    public Long getSeatId() {
-        return seatId;
+    public Long getId() {
+        return id;
     }
 
-    public void setSeatId(Long seatId) {
-        this.seatId = seatId;
+    public void setId(Long seatId) {
+        this.id = seatId;
     }
 
     public Room getRoom() {

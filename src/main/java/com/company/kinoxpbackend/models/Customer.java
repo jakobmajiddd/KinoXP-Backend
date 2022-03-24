@@ -21,7 +21,6 @@ public class Customer {
 
     @OneToMany(mappedBy = "customer", fetch = FetchType.LAZY,
             cascade = CascadeType.ALL)
-
     @JsonBackReference
     private List<Seat> seats;
 
