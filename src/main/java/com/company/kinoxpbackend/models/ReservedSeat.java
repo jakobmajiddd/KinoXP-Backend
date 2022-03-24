@@ -11,12 +11,12 @@ public class ReservedSeat {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long reservedSeatId;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "booking_id")
     private Booking booking;
 
-    @OneToOne // Test om man kan booke den samme sædenr. i forskellige rum
     @JoinColumn(name = "seat_id")
+    @OneToOne(cascade = CascadeType.ALL)
     private Seat seat;
 
 

@@ -1,6 +1,7 @@
 package com.company.kinoxpbackend.models;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "customers")
@@ -16,6 +17,9 @@ public class Customer {
             cascade = CascadeType.ALL)
     private Booking booking;
 
+    @OneToMany(mappedBy = "customer", fetch = FetchType.LAZY,
+            cascade = CascadeType.ALL)
+    private List<Seat> seats;
 
 
     private String name;
@@ -26,9 +30,10 @@ public class Customer {
 
     }
 
-    public Customer(Long id, Booking booking, String name, String email) {
+    public Customer(Long id, Booking booking, List<Seat> seats, String name, String email) {
         this.id = id;
         this.booking = booking;
+        this.seats = seats;
         this.name = name;
         this.email = email;
     }
@@ -47,6 +52,14 @@ public class Customer {
 
     public void setBooking(Booking booking) {
         this.booking = booking;
+    }
+
+    public List<Seat> getSeats() {
+        return seats;
+    }
+
+    public void setSeats(List<Seat> seats) {
+        this.seats = seats;
     }
 
     public String getName() {
