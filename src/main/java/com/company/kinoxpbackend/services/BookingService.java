@@ -23,4 +23,12 @@ public class BookingService {
     public List<Booking> getBookings() {
         return bookingRepository.findAll();
     }
+
+    public void deleteBooking(Long id) {
+        bookingRepository.deleteById(id);
+    }
+
+    public Booking getBooking(Long id) {
+        return bookingRepository.findById(id).orElseThrow(IllegalStateException::new);
+    }
 }

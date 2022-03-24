@@ -1,5 +1,11 @@
 package com.company.kinoxpbackend.models;
 
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+
+
+
 import javax.persistence.*;
 
 @Entity
@@ -11,14 +17,15 @@ public class ReservedSeat {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long reservedSeatId;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.ALL, fetch=FetchType.LAZY)
+    //@ManyToOne(mappedBy = "brand", orphanRemoval = true, fetch = FetchType.LAZY)
+    @OnDelete(action = OnDeleteAction.CASCADE)
     @JoinColumn(name = "booking_id")
     private Booking booking;
 
     @JoinColumn(name = "seat_id")
     @OneToOne(cascade = CascadeType.MERGE)
     private Seat seat;
-
 
     public ReservedSeat() {
 

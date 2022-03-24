@@ -18,7 +18,7 @@ public class Movie {
     private Long id;
 
     @OneToMany(cascade = CascadeType.MERGE)
-    @JsonBackReference
+    @JsonBackReference(value="shows")
     @JoinColumn(name = "movie_id")
     private List<Show> shows;
 

@@ -17,11 +17,12 @@ public class Customer {
 
     @OneToOne(mappedBy = "customer", fetch = FetchType.LAZY,
             cascade = CascadeType.ALL)
+    @JsonBackReference(value="bookings")
     private Booking booking;
 
     @OneToMany(mappedBy = "customer", fetch = FetchType.LAZY,
             cascade = CascadeType.ALL)
-    @JsonBackReference
+    @JsonBackReference(value="seats")
     private List<Seat> seats;
 
 

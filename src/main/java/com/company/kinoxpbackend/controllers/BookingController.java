@@ -11,6 +11,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/bookings")
+@CrossOrigin
 public class BookingController {
     private final BookingService bookingService;
 
@@ -20,18 +21,26 @@ public class BookingController {
     }
 
     @PostMapping
-    @CrossOrigin
     public ResponseEntity<Booking> createBooking(@RequestBody Booking booking){
-        System.out.println("Hejsa");
         bookingService.createBooking(booking);
-        System.out.println("Hej");
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
     @GetMapping
-    @CrossOrigin
     public ResponseEntity<List<Booking>> getBookings() {
         List <Booking> bookings = bookingService.getBookings();
         return new ResponseEntity<>(bookings, HttpStatus.OK);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Booking> deleteBooking(@PathVariable Long id) {
+        bookingService.deleteBooking(id);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<Booking> getBooking(@PathVariable Long id) {
+        Booking booking = bookingService.getBooking(id);
+        return new ResponseEntity<>(booking, HttpStatus.OK);
     }
 }
