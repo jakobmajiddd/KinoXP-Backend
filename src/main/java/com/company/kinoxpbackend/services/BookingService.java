@@ -5,6 +5,8 @@ import com.company.kinoxpbackend.repositories.BookingRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class BookingService {
     private final BookingRepository bookingRepository;
@@ -16,5 +18,9 @@ public class BookingService {
 
     public void createBooking(Booking booking) {
         bookingRepository.save(booking);
+    }
+
+    public List<Booking> getBookings() {
+        return bookingRepository.findAll();
     }
 }

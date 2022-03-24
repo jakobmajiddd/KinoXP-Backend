@@ -7,6 +7,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/api/bookings")
 public class BookingController {
@@ -24,5 +26,12 @@ public class BookingController {
         bookingService.createBooking(booking);
         System.out.println("Hej");
         return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    @GetMapping
+    @CrossOrigin
+    public ResponseEntity<List<Booking>> getBookings() {
+        List <Booking> bookings = bookingService.getBookings();
+        return new ResponseEntity<>(bookings, HttpStatus.OK);
     }
 }
