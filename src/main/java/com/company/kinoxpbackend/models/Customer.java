@@ -1,5 +1,7 @@
 package com.company.kinoxpbackend.models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -19,6 +21,8 @@ public class Customer {
 
     @OneToMany(mappedBy = "customer", fetch = FetchType.LAZY,
             cascade = CascadeType.ALL)
+
+    @JsonBackReference
     private List<Seat> seats;
 
 

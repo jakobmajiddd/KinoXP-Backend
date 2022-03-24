@@ -1,5 +1,6 @@
 package com.company.kinoxpbackend.models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
@@ -25,6 +26,7 @@ public class Show {
 
     @OneToMany(cascade = CascadeType.MERGE)
     @JoinColumn(name = "show_id")
+    @JsonBackReference
     private List<Booking> bookings;
 
     @ManyToOne
