@@ -1,5 +1,6 @@
 package com.company.kinoxpbackend.models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
@@ -20,11 +21,13 @@ public class ReservedSeat {
     @ManyToOne(cascade = CascadeType.ALL, fetch=FetchType.LAZY)
     //@ManyToOne(mappedBy = "brand", orphanRemoval = true, fetch = FetchType.LAZY)
     @OnDelete(action = OnDeleteAction.CASCADE)
+    @JsonBackReference("bookingtest")
     @JoinColumn(name = "booking_id")
     private Booking booking;
 
     @JoinColumn(name = "seat_id")
     @OneToOne(cascade = CascadeType.MERGE)
+    @JsonBackReference(value="seat2")
     private Seat seat;
 
     public ReservedSeat() {

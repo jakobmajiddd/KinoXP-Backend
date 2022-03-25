@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.persistence.Column;
 
 @RestController
+@CrossOrigin
 @RequestMapping("/api/reserved-seat")
 public class ReservedSeatController {
 
@@ -20,11 +21,9 @@ public class ReservedSeatController {
         this.reservedSeatService = reservedSeatService;
     }
 
-    @CrossOrigin
     @PostMapping("/reserve")
     public ResponseEntity<ReservedSeat> reserveSeats(@RequestBody ReservedSeat reservedSeat) {
         ReservedSeat savedReservedSeat = reservedSeatService.reserve(reservedSeat);
         return new ResponseEntity<>(savedReservedSeat, HttpStatus.OK);
-
     }
 }

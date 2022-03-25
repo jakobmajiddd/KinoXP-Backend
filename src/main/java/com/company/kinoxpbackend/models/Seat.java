@@ -15,13 +15,11 @@ public class Seat {
     @JoinColumn(name = "room_id")
     private Room room;
 
-    @ManyToOne
-    @JoinColumn(name = "customer_id")
+    @OneToOne(mappedBy = "seat")
     private Customer customer;
 
 
-    @JoinColumn(name = "reserved_seat_id")
-    @OneToOne(cascade = CascadeType.MERGE)
+    @OneToOne(mappedBy = "seat", cascade = CascadeType.MERGE)
     private ReservedSeat reservedSeat;
 
     public Seat() {

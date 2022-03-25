@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@CrossOrigin
 @RequestMapping("/api/shows") //Slet shows, kun api
 public class ShowController {
 
@@ -36,28 +37,24 @@ public class ShowController {
         return new ResponseEntity<>(shows, HttpStatus.OK);
     }
 
-    @CrossOrigin
     @GetMapping("/show/{id}")// Rigtig
     public ResponseEntity<Show> getShow(@PathVariable Long id) throws ShowNotFoundException {
         Show show = showService.findByid(id);
         return new ResponseEntity<>(show, HttpStatus.OK);
     }
 
-    @CrossOrigin
     @PutMapping("/edit/{id}")//Skal hede show id. verbet afgør hvad der sker
     public ResponseEntity<Show> editShow(@PathVariable Long id, @RequestBody Show show) {
         show.setId(id);
         return new ResponseEntity<>(showService.editShow(show), HttpStatus.OK);
     }
 
-    @CrossOrigin
     @DeleteMapping("/delete/{id}")// Skal også bare stå show
     public ResponseEntity<Show> deleteShow(@PathVariable Long id) {
         showService.deleteShow(id);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
-    @CrossOrigin
     @GetMapping("/{id}")
     public ResponseEntity<List<Show>> getShowsByMovieId(@PathVariable Long id) {
         List<Show> shows = showService.getShowsByMovieId(id);

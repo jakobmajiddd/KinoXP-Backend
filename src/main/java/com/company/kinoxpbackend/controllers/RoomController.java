@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
+@CrossOrigin
 @RequestMapping("/api/rooms")
 public class RoomController {
 
@@ -23,8 +24,6 @@ public class RoomController {
         this.roomService = roomService;
     }
 
-
-    @CrossOrigin
     @GetMapping()
     public ResponseEntity<List<Room>> getRooms() {
         List<Room> rooms = roomService.findAll();

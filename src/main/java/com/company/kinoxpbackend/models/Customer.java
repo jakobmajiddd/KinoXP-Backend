@@ -20,10 +20,9 @@ public class Customer {
     @JsonBackReference(value="bookings")
     private Booking booking;
 
-    @OneToMany(mappedBy = "customer", fetch = FetchType.LAZY,
-            cascade = CascadeType.ALL)
-    @JsonBackReference(value="seats")
-    private List<Seat> seats;
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "seat_id")
+    private Seat seat;
 
 
     private String name;
@@ -34,10 +33,10 @@ public class Customer {
 
     }
 
-    public Customer(Long id, Booking booking, List<Seat> seats, String name, String email) {
+    public Customer(Long id, Booking booking, Seat seat, String name, String email) {
         this.id = id;
         this.booking = booking;
-        this.seats = seats;
+        this.seat = seat;
         this.name = name;
         this.email = email;
     }
@@ -58,12 +57,12 @@ public class Customer {
         this.booking = booking;
     }
 
-    public List<Seat> getSeats() {
-        return seats;
+    public Seat getSeat() {
+        return seat;
     }
 
-    public void setSeats(List<Seat> seats) {
-        this.seats = seats;
+    public void setSeat(Seat seat) {
+        this.seat = seat;
     }
 
     public String getName() {
