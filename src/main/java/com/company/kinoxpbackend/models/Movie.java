@@ -2,6 +2,8 @@ package com.company.kinoxpbackend.models;
 
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
@@ -19,6 +21,7 @@ public class Movie {
 
     @OneToMany(cascade = CascadeType.MERGE)
     @JsonBackReference(value="shows")
+    @OnDelete(action = OnDeleteAction.CASCADE)
     @JoinColumn(name = "movie_id", updatable = false)
     private List<Show> shows;
 

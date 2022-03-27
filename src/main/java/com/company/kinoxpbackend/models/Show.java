@@ -29,7 +29,7 @@ public class Show {
     @JsonBackReference(value="bookings")
     private List<Booking> bookings;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.MERGE)
     //@JsonBackReference(value="movie")
     @JoinColumn(name = "movie_id")
     private Movie movie;
