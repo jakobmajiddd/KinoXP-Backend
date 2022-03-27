@@ -30,7 +30,7 @@ public class Show {
     private List<Booking> bookings;
 
     @ManyToOne
-    @JsonBackReference(value="movie")
+    //@JsonBackReference(value="movie")
     @JoinColumn(name = "movie_id")
     private Movie movie;
 

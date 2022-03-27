@@ -5,7 +5,7 @@ import com.company.kinoxpbackend.repositories.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
-/*
+
 @Component
 public class InitData implements CommandLineRunner {
 
@@ -34,7 +34,7 @@ public class InitData implements CommandLineRunner {
         System.out.println("HERE");
         Movie movie = new Movie();
         movie.setName("movie1");
-        movie = movieRepository.save(movie);
+        movieRepository.save(movie);
 
         Room room = new Room();
         room.setName("A");
@@ -45,9 +45,7 @@ public class InitData implements CommandLineRunner {
         seat.setRoom(room);
         seatRepository.save(seat);
 
-        Show show = new Show();
-        show.setMovie(movie);
-        showRepository.save(show);
+
 
         User user = new User();
         user.setPassword("123");
@@ -58,4 +56,3 @@ public class InitData implements CommandLineRunner {
 }
 
 
- */

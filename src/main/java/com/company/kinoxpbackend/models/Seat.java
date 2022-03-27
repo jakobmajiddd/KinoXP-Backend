@@ -15,8 +15,7 @@ public class Seat {
     @JoinColumn(name = "room_id")
     private Room room;
 
-
-    @OneToOne(mappedBy = "seat", cascade = CascadeType.MERGE)
+    @OneToOne(mappedBy = "seat", cascade = CascadeType.ALL)
     private ReservedSeat reservedSeat;
 
     public Seat() {

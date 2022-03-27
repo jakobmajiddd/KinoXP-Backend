@@ -19,7 +19,7 @@ public class Movie {
 
     @OneToMany(cascade = CascadeType.MERGE)
     @JsonBackReference(value="shows")
-    @JoinColumn(name = "movie_id")
+    @JoinColumn(name = "movie_id", updatable = false)
     private List<Show> shows;
 
     @Column(name = "image_url")
