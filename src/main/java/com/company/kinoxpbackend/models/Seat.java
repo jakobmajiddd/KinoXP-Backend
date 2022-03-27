@@ -15,9 +15,6 @@ public class Seat {
     @JoinColumn(name = "room_id")
     private Room room;
 
-    @OneToOne(mappedBy = "seat")
-    private Customer customer;
-
 
     @OneToOne(mappedBy = "seat", cascade = CascadeType.MERGE)
     private ReservedSeat reservedSeat;
@@ -25,10 +22,9 @@ public class Seat {
     public Seat() {
     }
 
-    public Seat(Long id, Room room, Customer customer, ReservedSeat reservedSeat) {
+    public Seat(Long id, Room room, ReservedSeat reservedSeat) {
         this.id = id;
         this.room = room;
-        this.customer = customer;
         this.reservedSeat = reservedSeat;
     }
 
@@ -48,13 +44,7 @@ public class Seat {
         this.room = room;
     }
 
-    public Customer getCustomer() {
-        return customer;
-    }
 
-    public void setCustomer(Customer customer) {
-        this.customer = customer;
-    }
 
     public ReservedSeat getReservedSeat() {
         return reservedSeat;

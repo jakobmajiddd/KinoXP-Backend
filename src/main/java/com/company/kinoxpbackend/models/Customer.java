@@ -20,11 +20,6 @@ public class Customer {
     @JsonBackReference(value="bookings")
     private Booking booking;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "seat_id")
-    private Seat seat;
-
-
     private String name;
 
     private String email;
@@ -33,10 +28,9 @@ public class Customer {
 
     }
 
-    public Customer(Long id, Booking booking, Seat seat, String name, String email) {
+    public Customer(Long id, Booking booking, String name, String email) {
         this.id = id;
         this.booking = booking;
-        this.seat = seat;
         this.name = name;
         this.email = email;
     }
@@ -57,13 +51,6 @@ public class Customer {
         this.booking = booking;
     }
 
-    public Seat getSeat() {
-        return seat;
-    }
-
-    public void setSeat(Seat seat) {
-        this.seat = seat;
-    }
 
     public String getName() {
         return name;
