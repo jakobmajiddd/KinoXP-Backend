@@ -1,7 +1,6 @@
 package com.company.kinoxpbackend.models;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
@@ -16,7 +15,7 @@ public class ReservedSeat {
     @Id
     @Column(name = "reserved_seat_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long reservedSeatId;
+    private Long id;
 
     @ManyToOne(cascade = CascadeType.ALL, fetch=FetchType.LAZY)
     //@ManyToOne(mappedBy = "brand", orphanRemoval = true, fetch = FetchType.LAZY)
@@ -34,18 +33,18 @@ public class ReservedSeat {
 
     }
 
-    public ReservedSeat(Long reservedSeatId, Booking booking, Seat seat) {
-        this.reservedSeatId = reservedSeatId;
+    public ReservedSeat(Long id, Booking booking, Seat seat) {
+        this.id = id;
         this.booking = booking;
         this.seat = seat;
     }
 
-    public Long getReservedSeatId() {
-        return reservedSeatId;
+    public Long getId() {
+        return id;
     }
 
-    public void setReservedSeatId(Long reservedSeatId) {
-        this.reservedSeatId = reservedSeatId;
+    public void setId(Long reservedSeatId) {
+        this.id = reservedSeatId;
     }
 
     public Booking getBooking() {

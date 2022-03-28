@@ -23,40 +23,40 @@ public class ShowController {
     }
 
     @CrossOrigin
-    @PostMapping// Istedet for create, skriv show
+    @PostMapping
     public ResponseEntity<Show> createShow(@RequestBody Show show) {
         Show showCreated = showService.createShow(show);
-        System.out.println(showCreated);
         return new ResponseEntity<>(showCreated, HttpStatus.OK);
     }
 
     @CrossOrigin
-    @GetMapping() //Den burde hede "/shows" da den henter flere shows
+    @GetMapping()
     public ResponseEntity<List<Show>> getShows() {
         List<Show> shows = showService.getShows();
         return new ResponseEntity<>(shows, HttpStatus.OK);
     }
 
-    @GetMapping("/show/{id}")// Rigtig
+    @GetMapping("/{id}")
     public ResponseEntity<Show> getShow(@PathVariable Long id) throws ShowNotFoundException {
         Show show = showService.findByid(id);
         return new ResponseEntity<>(show, HttpStatus.OK);
     }
 
-    @PutMapping("/edit/{id}")//Skal hede show id. verbet afgør hvad der sker
+    @PutMapping("/{id}")
     public ResponseEntity<Show> editShow(@PathVariable Long id, @RequestBody Show show) {
         show.setId(id);
         return new ResponseEntity<>(showService.editShow(show), HttpStatus.OK);
     }
 
-    @DeleteMapping("/delete/{id}")// Skal også bare stå show
+    @DeleteMapping("/{id}")
     public ResponseEntity<Show> deleteShow(@PathVariable Long id) {
         showService.deleteShow(id);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/movie/{id}")
     public ResponseEntity<List<Show>> getShowsByMovieId(@PathVariable Long id) {
+        System.out.println(id);
         List<Show> shows = showService.getShowsByMovieId(id);
         System.out.println(shows.size());
         return new ResponseEntity<>(shows, HttpStatus.OK);

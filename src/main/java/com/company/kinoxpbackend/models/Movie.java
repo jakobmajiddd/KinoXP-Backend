@@ -19,10 +19,9 @@ public class Movie {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @OneToMany(cascade = CascadeType.MERGE)
+    @OneToMany(mappedBy = "movie", cascade = CascadeType.MERGE)
     @JsonBackReference(value="shows")
     @OnDelete(action = OnDeleteAction.CASCADE)
-    @JoinColumn(name = "movie_id", updatable = false)
     private List<Show> shows;
 
     @Column(name = "image_url")

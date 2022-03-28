@@ -9,6 +9,7 @@ import java.util.List;
 
 @Service
 public class BookingService {
+
     private final BookingRepository bookingRepository;
 
     @Autowired

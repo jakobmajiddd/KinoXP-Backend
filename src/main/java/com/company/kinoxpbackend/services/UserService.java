@@ -18,6 +18,6 @@ public class UserService {
 
     public User verifyLogin(User user) throws LoginException {
         return userRepository.findByUsernamePasswordMatch(user.getUsername(), user.getPassword())
-                .orElseThrow(() -> new LoginException("User not found"));
+                .orElseThrow(() -> new LoginException("Incorrect details"));
     }
 }

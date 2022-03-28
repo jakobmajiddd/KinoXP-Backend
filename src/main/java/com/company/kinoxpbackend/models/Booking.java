@@ -26,9 +26,8 @@ public class Booking {
     @Cascade(org.hibernate.annotations.CascadeType.DELETE)
     private Customer customer;
 
-    @OneToMany(cascade = CascadeType.MERGE)
+    @OneToMany(mappedBy = "booking", cascade = CascadeType.MERGE, orphanRemoval = true)
     @OnDelete(action = OnDeleteAction.CASCADE)
-    @JoinColumn(name = "reserved_seat_id")
     private List<ReservedSeat> reservedSeats;
 
     public Booking() {

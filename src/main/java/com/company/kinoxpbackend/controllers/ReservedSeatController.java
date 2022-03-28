@@ -21,7 +21,7 @@ public class ReservedSeatController {
         this.reservedSeatService = reservedSeatService;
     }
 
-    @PostMapping("/reserve")
+    @PostMapping()
     public ResponseEntity<ReservedSeat> reserveSeats(@RequestBody ReservedSeat reservedSeat) {
         ReservedSeat savedReservedSeat = reservedSeatService.reserve(reservedSeat);
         return new ResponseEntity<>(savedReservedSeat, HttpStatus.OK);

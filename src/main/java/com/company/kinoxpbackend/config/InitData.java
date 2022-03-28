@@ -22,6 +22,10 @@ public class InitData implements CommandLineRunner {
     SeatRepository seatRepository;
     @Autowired
     CustomerRepository customerRepository;
+    @Autowired
+    BookingRepository bookingRepository;
+    @Autowired
+    ReservedSeatRepository reservedSeatRepository;
 
 
     @Override
@@ -34,17 +38,30 @@ public class InitData implements CommandLineRunner {
         System.out.println("HERE");
         Movie movie = new Movie();
         movie.setName("movie1");
-        movieRepository.save(movie);
+        movie = movieRepository.save(movie);
 
         Room room = new Room();
         room.setName("A");
         room.setSeatAmount(20);
-        roomRepository.save(room);
+        room = roomRepository.save(room);
 
         Seat seat = new Seat();
         seat.setRoom(room);
         seatRepository.save(seat);
 
+        Show show = new Show();
+        show.setRoom(room);
+
+        show.setMovie(movie);
+
+        show = showRepository.save(show);
+
+
+
+        Booking booking = new Booking();
+        booking.setCustomer(new Customer());
+        booking.setShow(show);
+        bookingRepository.save(booking);
 
 
         User user = new User();

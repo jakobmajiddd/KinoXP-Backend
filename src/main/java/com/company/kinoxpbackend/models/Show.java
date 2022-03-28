@@ -2,6 +2,8 @@ package com.company.kinoxpbackend.models;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 import javax.persistence.*;
 import java.time.LocalTime;
@@ -25,12 +27,13 @@ public class Show {
     private LocalTime startDate;
 
     @OneToMany(cascade = CascadeType.MERGE)
+    @OnDelete(action = OnDeleteAction.CASCADE)
     @JoinColumn(name = "show_id")
     @JsonBackReference(value="bookings")
     private List<Booking> bookings;
 
     @ManyToOne(cascade = CascadeType.MERGE)
-    //@JsonBackReference(value="movie")
+    @OnDelete(action = OnDeleteAction.CASCADE)
     @JoinColumn(name = "movie_id")
     private Movie movie;
 
